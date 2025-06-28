@@ -1,0 +1,174 @@
+.task-card {
+  position: relative;
+  padding: 1rem;
+  border-radius: 1rem;
+  background-color: #fff;
+  border: 2px solid #f1f1f1;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.08);
+  width: 280px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.2s;
+  font-family: 'Segoe UI', sans-serif;
+  margin: 1rem;
+
+  &:hover {
+    transform: scale(1.01);
+  }
+
+  .task-card__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .task-title {
+      font-weight: 600;
+      font-size: 1rem;
+      color: #333;
+
+      @media (max-width: 768px) {
+        font-size: 0.95rem;
+      }
+    }
+
+    .icon {
+      color: #555;
+      transition: color 0.2s;
+
+      &:hover {
+        color: #000;
+      }
+
+      &.save {
+        color: #28a745;
+
+        &:hover {
+          color: #218838;
+        }
+      }
+    }
+  }
+
+  .task-description {
+    flex-grow: 1;
+    margin-top: 0.6rem;
+    font-size: 0.95rem;
+    color: #444;
+    line-height: 1.5;
+
+    @media (max-width: 768px) {
+      font-size: 0.9rem;
+    }
+  }
+
+  .task-card__actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1.2rem;
+
+    .left-icons {
+      display: flex;
+      gap: 0rem; // espaço entre os ícones
+    }
+
+    .right-icon {
+      margin-left: auto; // força para o extremo direito
+    }
+
+    .icon {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 1.4rem;
+      color: #555;
+      transition: color 0.2s;
+
+      &:hover {
+        color: #000;
+      }
+    }
+  }
+
+  .divider {
+    border: none;
+    border-top: 2px solid #ddd;
+    margin: 1px 0;
+    height: 0;
+  }
+
+  .color-picker-container {
+    position: absolute;
+    bottom: -3rem;
+    left: 0;
+    padding: 0.5rem 0.8rem;
+    background: #fff;
+    border-radius: 0.8rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  }
+
+  .task-title-input {
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    background: transparent;
+    outline: none;
+    width: 100%;
+  }
+
+  .task-description-input {
+    width: 100%;
+    min-height: 60px;
+    font-size: 0.95rem;
+    border: none;
+    resize: vertical;
+    background: transparent;
+    outline: none;
+    border-bottom: 1px solid #ccc;
+    color: #333;
+  }
+}
+
+@media (max-width: 480px) {
+  .task-card {
+    padding: 0.75rem;
+    border-radius: 0.6rem;
+
+    .task-title {
+      font-size: 0.95rem;
+    }
+
+    .task-description {
+      font-size: 0.85rem;
+    }
+
+    .icon {
+      font-size: 1rem;
+    }
+
+    .task-card__actions {
+      flex-direction: row; // ← manter ícones em linha
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+
+      .left-icons {
+        display: flex;
+        flex-direction: row; // ← força linha horizontal
+        gap: 0.4rem;
+      }
+
+      .right-icon {
+        margin-left: auto;
+      }
+    }
+
+    input.task-title-input,
+    textarea.task-description-input {
+      font-size: 0.9rem;
+    }
+  }
+}

@@ -1,0 +1,23 @@
+.color-picker {
+  display: flex;
+  flex-wrap: nowrap; // ❗ impede quebra de linha
+  justify-content: center; // centraliza horizontalmente
+  gap: 0.6rem;
+  padding: 0.4rem 0.6rem;
+  background: #fff;
+  border-radius: 0.6rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+
+  .color-circle {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 1px solid #aaa;
+    transition: transform 0.1s ease-in-out;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+}

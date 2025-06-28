@@ -1,0 +1,120 @@
+:root {
+  /* Tipografia */
+  font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  font-weight: 400;
+
+  /* Cores */
+  --bg-light: #ffffff;
+  --bg-dark: #1e1e1e;
+  --text-light: #1e1e1e;
+  --text-dark: #f1f1f1;
+  --accent: #646cff;
+
+  /* Suavização */
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Layout */
+  color-scheme: light dark;
+  background-color: var(--bg-dark);
+  color: var(--text-dark);
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    background-color: var(--bg-light);
+    color: var(--text-light);
+  }
+}
+
+/* Reset básico */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  width: 100%;
+  min-height: 100vh;
+  background-color: inherit;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+/* Links */
+a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+a:hover {
+  color: darken(var(--accent), 10%);
+}
+
+/* Botões */
+button {
+  font-family: inherit;
+  font-size: 1rem;
+  padding: 0.6rem 1rem;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  background-color: transparent;
+  cursor: pointer;
+  transition:
+    background-color 0.2s,
+    border-color 0.2s;
+}
+button:hover {
+  background-color: transparent;
+  border-color: none;
+}
+button:focus,
+button:focus-visible {
+  outline: 2px solid #646cff;
+  outline-offset: 2px;
+}
+
+/* Títulos */
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-weight: 600;
+  line-height: 1.25;
+  color: inherit;
+}
+
+/* Formulários */
+input,
+textarea {
+  font-family: inherit;
+  font-size: 1rem;
+  padding: 0.6rem 0.75rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  color: #1e1e1e;
+}
+input:focus,
+textarea:focus {
+  border-color: #646cff;
+  outline: none;
+}
+
+/* Responsivo base */
+@media (max-width: 768px) {
+  body {
+    font-size: 15px;
+  }
+}
