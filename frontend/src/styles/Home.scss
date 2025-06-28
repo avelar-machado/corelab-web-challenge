@@ -1,36 +1,44 @@
+// === Estilo principal da página Home ===
 .home {
   padding: 1rem 2rem;
   width: 100%;
 
-  @media (max-width: 768px) {
-    padding: 1rem;
-  }
-
+  // --- Título das seções ---
   h2 {
     margin-top: 5rem;
     font-size: 1.1rem;
     color: #444;
 
+    // Responsivo até 768px
     @media (max-width: 768px) {
       font-size: 1.1rem;
     }
   }
 
+  // --- Lista de tarefas em grade responsiva ---
   .task-list {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 1rem;
 
+    // Em telas menores, uma coluna apenas
     @media (max-width: 768px) {
       grid-template-columns: 1fr;
     }
   }
+
+  // === Responsivo até 768px ===
+  @media (max-width: 768px) {
+    padding: 1rem;
+  }
 }
 
+// === Responsivo até 480px (mobile) ===
 @media (max-width: 480px) {
   .home {
     padding: 0.5rem;
 
+    // Título mais compacto e alinhado para mobile
     h2 {
       font-size: 1rem;
       margin-top: 1rem;
@@ -38,6 +46,7 @@
       width: 100%;
     }
 
+    // Tarefas dispostas em linha flexível
     .task-list {
       display: flex;
       flex-wrap: wrap;

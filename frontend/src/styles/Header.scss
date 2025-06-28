@@ -1,3 +1,4 @@
+// === Cabeçalho principal fixo ===
 .header {
   background: #fff;
   padding: 0.75rem 1.5rem;
@@ -5,11 +6,12 @@
   width: 100%;
   align-items: center;
   gap: 1rem;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
   position: sticky;
   top: 0;
   z-index: 10;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 
+  // --- Logo com ícone e texto ---
   .logo {
     display: flex;
     align-items: center;
@@ -25,6 +27,7 @@
     }
   }
 
+  // --- Campo de busca com ícone ---
   .search-container {
     position: relative;
     flex: 1;
@@ -32,11 +35,11 @@
 
     .search-notes {
       width: 100%;
-      cursor: pointer;
       padding: 0.6rem 2.5rem 0.6rem 1rem;
-      border-radius: 6px;
       border: 1px solid #ccc;
+      border-radius: 6px;
       font-size: 1rem;
+      cursor: pointer;
 
       @media (max-width: 768px) {
         width: 120px;
@@ -55,6 +58,7 @@
     }
   }
 
+  // --- Botão de logout/fechar ---
   .close-btn {
     margin-left: auto;
     background: none;
@@ -64,13 +68,15 @@
     color: #666;
   }
 
+  // === Responsivo até 768px ===
   @media (max-width: 768px) {
     flex-direction: column;
-    gap: 0.5rem;
     align-items: flex-start;
+    gap: 0.5rem;
   }
 }
 
+// === Responsivo até 480px ===
 @media (max-width: 480px) {
   .header {
     flex-direction: row;

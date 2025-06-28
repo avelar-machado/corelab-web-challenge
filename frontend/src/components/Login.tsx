@@ -1,10 +1,6 @@
 import { useState } from 'react';
 import '../styles/Login.scss';
-
-// Tipo das props esperadas pelo componente Login
-type LoginProps = {
-  onLogin?: () => void; // Função opcional a ser chamada após o login
-};
+import type { LoginProps } from '../types/loginProps';
 
 export const Login = ({ onLogin }: LoginProps) => {
   // Estado para controlar a visibilidade do modal

@@ -1,11 +1,7 @@
 import '../styles/Header.scss';
 import { FaSearch } from 'react-icons/fa';
 import { useTasks } from '../store/useTasks';
-
-// Define o tipo das props esperadas pelo componente
-type HeaderProps = {
-  onLogout: () => void; // Função chamada ao clicar no botão de logout (✕)
-};
+import type { HeaderProps } from '../types/headerProps.ts';
 
 export const Header = ({ onLogout }: HeaderProps) => {
   const { searchTerm, setSearchTerm } = useTasks(); // Estado global para filtro de busca

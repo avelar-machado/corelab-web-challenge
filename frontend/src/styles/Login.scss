@@ -1,3 +1,4 @@
+// === Overlay escura para o modal ===
 .modal-overlay {
   position: fixed;
   inset: 0;
@@ -9,6 +10,7 @@
   padding: 1rem;
 }
 
+// === Caixa principal do modal ===
 .modal {
   background: #fff;
   border-radius: 12px;
@@ -18,6 +20,7 @@
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
+// === Título do modal ===
 .modal-title {
   font-size: 1.5rem;
   margin-bottom: 1rem;
@@ -25,6 +28,7 @@
   font-weight: bold;
 }
 
+// === Campo de entrada do modal ===
 .modal-input {
   width: 100%;
   padding: 0.75rem;
@@ -34,12 +38,14 @@
   margin-bottom: 0.5rem;
 }
 
+// === Texto de erro no modal ===
 .modal-error {
   color: red;
   font-size: 0.875rem;
   margin-bottom: 0.75rem;
 }
 
+// === Botão do modal ===
 .modal-button {
   width: 100%;
   background-color: #facc15;
@@ -56,7 +62,7 @@
   }
 }
 
-// Responsivo para telas menores
+// === Responsividade para telas pequenas ===
 @media (max-width: 480px) {
   .modal {
     padding: 1.5rem 1rem;

@@ -1,47 +1,64 @@
+// Importa hooks e componentes necessários
 import { useEffect, useState } from 'react';
 import { useTasks } from '../store/useTasks';
 import { TaskCard } from '../components/TaskCard';
 import { Header } from '../components/Header';
 import { TaskForm } from '../components/TaskForm';
+import { TaskFilters } from '../components/TaskFilters';
 import { Login } from '../components/Login';
 import '../styles/Home.scss';
 
 const Home = () => {
+  // Obtém tarefas, função de busca e termo de busca do store global
   const { tasks, fetchTasks, searchTerm } = useTasks();
 
-  // Verifica se o usuário já está logado com base no e-mail salvo no localStorage
+  // Estado local para saber se o usuário está logado
   const [loggedIn, setLoggedIn] = useState(!!localStorage.getItem('userEmail'));
 
-  // Ao entrar ou alterar estado de login, busca as tarefas se logado
+  // Filtros de UI
+  const [showOnlyFavorites, setShowOnlyFavorites] = useState(false);
+  const [selectedColor, setSelectedColor] = useState<string | null>(null);
+
+  // Quando estiver logado, busca as tarefas da API
   useEffect(() => {
     if (loggedIn) {
       fetchTasks();
     }
   }, [loggedIn, fetchTasks]);
 
-  // Função para sair: remove e-mail do localStorage e recarrega a página
+  // Função de logout: remove o e-mail salvo e recarrega a página
   const handleLogout = () => {
     localStorage.removeItem('userEmail');
     window.location.reload();
   };
 
-  // Termo de busca normalizado
+  // Termo de busca convertido para minúsculas
   const search = searchTerm.toLowerCase();
 
-  // Filtra as tarefas com base no termo de busca (título ou descrição)
-  const filteredTasks = tasks.filter(
-    (task) =>
+  // Aplica os filtros: busca, favoritos e cor
+  const filteredTasks = tasks.filter((task) => {
+    // Verifica se título ou descrição correspondem à busca
+    const matchesSearch =
       (task.title || '').toLowerCase().includes(search) ||
-      (task.description || '').toLowerCase().includes(search)
-  );
+      (task.description || '').toLowerCase().includes(search);
 
-  // Separa tarefas favoritas e não favoritas
+    // Verifica se é favorito, se o filtro estiver ativado
+    const matchesFavorite = !showOnlyFavorites || task.isFavorite;
+
+    // Verifica se a cor corresponde à cor selecionada
+    const matchesColor = !selectedColor || task.color === selectedColor;
+
+    // Só inclui tarefas que passam nos 3 filtros
+    return matchesSearch && matchesFavorite && matchesColor;
+  });
+
+  // Divide tarefas filtradas em favoritas e outras
   const favorites = filteredTasks.filter((t) => t.isFavorite);
   const others = filteredTasks.filter((t) => !t.isFavorite);
 
   return (
     <>
-      {/* Se não estiver logado, exibe o modal de login */}
+      {/* Se o usuário não estiver logado, mostra o modal de login */}
       {!loggedIn && <Login onLogin={() => setLoggedIn(true)} />}
 
       {/* Cabeçalho com campo de busca e botão de logout */}
@@ -50,9 +67,16 @@ const Home = () => {
       {/* Formulário para criar nova tarefa */}
       <TaskForm />
 
-      {/* Lista principal de tarefas */}
+      {/* Componente de filtros (favoritos + cor) */}
+      <TaskFilters
+        showOnlyFavorites={showOnlyFavorites}
+        setShowOnlyFavorites={setShowOnlyFavorites}
+        selectedColor={selectedColor}
+        setSelectedColor={setSelectedColor}
+      />
+
       <main className="home">
-        {/* Se houver favoritas, exibe seção */}
+        {/* Se houver tarefas favoritas, renderiza seção "Favoritas" */}
         {favorites.length > 0 && (
           <div className="section">
             <h2>Favoritas</h2>
@@ -64,7 +88,7 @@ const Home = () => {
           </div>
         )}
 
-        {/* Se houver outras tarefas, exibe seção */}
+        {/* Se houver outras tarefas (não favoritas), renderiza seção "Outras" */}
         {others.length > 0 && (
           <div className="section">
             <h2 className="other">Outras</h2>

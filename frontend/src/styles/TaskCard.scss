@@ -1,3 +1,4 @@
+// === Estilo principal do card de tarefa ===
 .task-card {
   position: relative;
   padding: 1rem;
@@ -18,6 +19,7 @@
     transform: scale(1.01);
   }
 
+  // === Cabeçalho com título e botão de favorito ===
   .task-card__header {
     display: flex;
     justify-content: space-between;
@@ -51,6 +53,7 @@
     }
   }
 
+  // === Descrição da tarefa ===
   .task-description {
     flex-grow: 1;
     margin-top: 0.6rem;
@@ -63,6 +66,7 @@
     }
   }
 
+  // === Área de botões de ação (editar, cor, deletar) ===
   .task-card__actions {
     display: flex;
     justify-content: space-between;
@@ -71,11 +75,11 @@
 
     .left-icons {
       display: flex;
-      gap: 0rem; // espaço entre os ícones
+      gap: 0rem;
     }
 
     .right-icon {
-      margin-left: auto; // força para o extremo direito
+      margin-left: auto;
     }
 
     .icon {
@@ -92,6 +96,7 @@
     }
   }
 
+  // === Linha divisória entre título e descrição ===
   .divider {
     border: none;
     border-top: 2px solid #ddd;
@@ -99,6 +104,7 @@
     height: 0;
   }
 
+  // === Container do seletor de cor ===
   .color-picker-container {
     position: absolute;
     bottom: -3rem;
@@ -109,6 +115,7 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
   }
 
+  // === Campo de entrada do título (modo edição) ===
   .task-title-input {
     font-size: 1rem;
     font-weight: bold;
@@ -119,6 +126,7 @@
     width: 100%;
   }
 
+  // === Campo de entrada da descrição (modo edição) ===
   .task-description-input {
     width: 100%;
     min-height: 60px;
@@ -132,6 +140,7 @@
   }
 }
 
+// === Responsividade para telas pequenas ===
 @media (max-width: 480px) {
   .task-card {
     padding: 0.75rem;
@@ -150,14 +159,14 @@
     }
 
     .task-card__actions {
-      flex-direction: row; // ← manter ícones em linha
+      flex-direction: row;
       align-items: center;
       justify-content: space-between;
       gap: 0.5rem;
 
       .left-icons {
         display: flex;
-        flex-direction: row; // ← força linha horizontal
+        flex-direction: row;
         gap: 0.4rem;
       }
 
