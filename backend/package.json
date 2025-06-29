@@ -5,7 +5,7 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "test": "set NODE_OPTIONS=--experimental-vm-modules && jest",
+    "test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest",
     "dev": "nodemon src/server.js",
     "start": "node src/server.js"
   },
@@ -22,13 +22,16 @@
   "devDependencies": {
     "@babel/plugin-transform-runtime": "^7.27.4",
     "@babel/preset-env": "^7.27.2",
+    "@types/jest": "^30.0.0",
     "babel-jest": "^30.0.2",
+    "cross-env": "^7.0.3",
     "eslint": "^9.29.0",
     "jest": "^30.0.3",
     "mongodb-memory-server": "^10.1.4",
     "nodemon": "^3.1.10",
     "prettier": "^3.6.0",
-    "supertest": "^7.1.1"
+    "supertest": "^7.1.1",
+    "ts-jest": "^29.4.0"
   },
   "jest": {
     "setupFilesAfterEnv": [
