@@ -11,22 +11,32 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # Checkout do código
       - name: Checkout do repositório
         uses: actions/checkout@v4
 
+      # Configurar Node.js na versão 18
       - name: Configurar Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '18'
 
-      - name: Instalar dependências
+      # Instalar dependências do frontend
+      - name: Instalar dependências do frontend
         working-directory: ./frontend
         run: npm install
 
+      # Instalar dependências do backend (inclui cross-env e jest)
+      - name: Instalar dependências do backend
+        working-directory: ./backend
+        run: npm install
+
+      # Rodar testes do backend
       - name: Rodar testes backend
         working-directory: ./backend
         run: npm test
 
+      # Rodar testes do frontend
       - name: Rodar testes frontend
         working-directory: ./frontend
         run: npm test
