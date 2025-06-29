@@ -7,30 +7,26 @@ on:
     branches: [main]
 
 jobs:
-  build-and-test:
+  build:
     runs-on: ubuntu-latest
 
-    services:
-      mongo:
-        image: mongo:6
-        ports:
-          - 27017:27017
-
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout do repositório
+        uses: actions/checkout@v4
 
       - name: Configurar Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '18'
 
       - name: Instalar dependências
+        working-directory: ./frontend
         run: npm install
 
       - name: Rodar testes backend
-        run: npm test
         working-directory: ./backend
+        run: npm test
 
       - name: Rodar testes frontend
-        run: npm test
         working-directory: ./frontend
+        run: npm test
